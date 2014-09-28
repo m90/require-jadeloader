@@ -36,11 +36,10 @@ describe('require-jadeloader writer', function(done){
 				, 'views' : './demo/lib/views'
 			}
 			, optimize : 'none'
+			, inlineText : false
 			, stubModules : ['text', 'jade', 'jadeloader']
-			, include : ['runtime']
-			, out: function(data){
-				console.log('got data', data);
-			}
+			, include : ['jade-runtime']
+			, out: 'demo/lib/built.js'
 		}, function(){
 			assert(true);
 			done();
