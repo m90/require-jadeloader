@@ -24,7 +24,7 @@ To stub out the modules use:
     ({
       paths : {
         'jade-runtime' : './bower_components/jade/runtime'
-      }
+      },
       stubModules: ['text', 'jade', 'jadeloader'],
       include : ['jade-runtime']
     })
