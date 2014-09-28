@@ -8,10 +8,11 @@ In development, it uses XMLHttpRequest to fetch the `.jade` files, so you can on
 ## Usage
 
 Reference Jade files via the `jadeloader!` plugin name:
-
-    require(['jadeloader!userview'], function(userView){
-      $('.user').html(userView(locals));
-    });
+```javascript
+require(['jadeloader!userview'], function(userView){
+  $('.user').html(userView(locals));
+});
+```
 
 They will be returned as a Jade template function that accepts locals as the first arg.
 
@@ -21,13 +22,15 @@ When you are ready to deploy your application and want to compile your JS into a
 
 To stub out the modules use:
 
-    ({
-      paths : {
-        'jade-runtime' : './bower_components/jade/runtime'
-      },
-      stubModules: ['text', 'jade', 'jadeloader'],
-      include : ['jade-runtime']
-    })
+```javascript
+({
+  paths : {
+    'jade-runtime' : './bower_components/jade/runtime'
+  },
+  stubModules: ['text', 'jade', 'jadeloader'],
+  include : ['jade-runtime']
+})
+```
 
 ## License
 Available via the MIT License. Jade is subject to its own licensing.
