@@ -17,12 +17,16 @@ They will be returned as a Jade template function that accepts locals as the fir
 
 ## Optimizing
 
-When you are ready to deploy your application and want to compile your JS into a single file you can make use of the requireJS optimizer. `require-jadeloader` includes optimizer instructions that will precompile the templates to raw JS, so you can stub out the Jade library from the compiled source.  Only do this if you are not going to be dynamically including more Jade templates though (i.e. you're building into a single file).
+When you are ready to deploy your application and want to compile your JS into a single file you can make use of the requireJS optimizer. `require-jadeloader` includes optimizer instructions that will precompile the templates to raw JS, so you can stub out the Jade library from the compiled source and use the much smaller runtime version instead.  Only do this if you are not going to be dynamically including more Jade templates though (i.e. you're building into a single file).
 
 To stub out the modules use:
 
     ({
-      stubModules: ['text', 'jade', 'jadeloader']
+      paths : {
+        'jade-runtime' : './bower_components/jade/runtime'
+      }
+      stubModules: ['text', 'jade', 'jadeloader'],
+      include : ['jade-runtime']
     })
 
 ## License

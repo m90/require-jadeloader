@@ -31,11 +31,13 @@ describe('require-jadeloader writer', function(done){
 			, paths: {
 				'text' : './bower_components/requirejs-text/text'
 				, 'jade' : './bower_components/jade/jade'
+				, 'jade-runtime' : './bower_components/jade/runtime'
 				, 'jadeloader' : './jadeloader'
 				, 'views' : './demo/lib/views'
 			}
 			, optimize : 'none'
 			, stubModules : ['text', 'jade', 'jadeloader']
+			, include : ['runtime']
 			, out: function(data){
 				console.log('got data', data);
 			}
