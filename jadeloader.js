@@ -9,7 +9,8 @@ define(function(){
 		, load: function (name, parentRequire, onload, config){
 			if (config.isBuild){
 				parentRequire(['text!' + name + '.jade'], function(templateString){
-					buildMap[name] = nodeRequire('jade').compileClient(templateString, { compileDebug: false })
+					/* global nodeRequire */
+					buildMap[name] = nodeRequire('jade').compileClient(templateString, { compileDebug: false });
 					onload(buildMap[name]);
 				});
 			} else {
