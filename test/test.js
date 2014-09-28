@@ -23,6 +23,26 @@ describe('require-jadeloader loader', function(){
 
 });
 
-describe('require-json writer', function(done){
+describe('require-jadeloader writer', function(done){
+	it('compiles templates into dependency-less modules', function(done){
+		requirejs.optimize({
+			baseUrl : '.'
+			, name : './demo/lib/main'
+			, paths: {
+				'text' : './bower_components/requirejs-text/text'
+				, 'jade' : './bower_components/jade/jade'
+				, 'jadeloader' : './jadeloader'
+				, 'views' : './demo/lib/views'
+			}
+			, optimize : 'none'
+			, stubModules : ['text', 'jade', 'jadeloader']
+			, out: function(data){
+				console.log('got data', data);
+			}
+		}, function(){
+			assert(true);
+			done();
+		});
 
+	});
 });
