@@ -28,6 +28,7 @@ To stub out the modules use:
     'jade-runtime' : './bower_components/jade/runtime'
   },
   stubModules: ['text', 'jade', 'jadeloader'],
+  inlineText : false,
   include : ['jade-runtime']
 })
 ```
