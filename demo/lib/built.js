@@ -1,13 +1,12 @@
+define('text',{});
 define('jadeloader',{load: function(id){throw new Error("Dynamic load not allowed: " + id);}});
-define('text',{load: function(id){throw new Error("Dynamic load not allowed: " + id);}});
-
 
 define("jadeloader!views/welcome", ["jade-runtime"], function(jade){ return function template(locals) {
 var buf = [];
 var jade_mixins = {};
 var jade_interp;
-
-buf.push("<undefined></undefined>");;return buf.join("");
+;var locals_for_with = (locals || {});(function (world) {
+buf.push("<h1>Hello " + (jade.escape((jade_interp = world) == null ? '' : jade_interp)) + "!</h1>");}.call(this,"world" in locals_for_with?locals_for_with.world:typeof world!=="undefined"?world:undefined));;return buf.join("");
 }});
 
 require({

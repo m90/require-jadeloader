@@ -1,4 +1,4 @@
-define(function(){
+define(['text'], function(text){
 	var buildMap = {};
 	return {
 		write: function(pluginName, name, write){
@@ -8,15 +8,16 @@ define(function(){
 		}
 		, load: function (name, parentRequire, onload, config){
 			if (config.isBuild){
-				parentRequire(['text!' + name + '.jade'], function(templateString){
+				text.get(parentRequire.toUrl(name + '.jade'), function(templateString){
 					/* global nodeRequire */
 					buildMap[name] = nodeRequire('jade').compileClient(templateString, { compileDebug: false });
 					onload(buildMap[name]);
 				});
 			} else {
-				parentRequire(['jade', 'text!' + name + '.jade'], function(Jade, templateString){
-					var f = Jade.compile(templateString);
-					onload(f);
+				text.get(parentRequire.toUrl(name + '.jade'), function(templateString){
+					parentRequire(['jade'], function(Jade){
+						onload(Jade.compile(templateString));
+					});
 				});
 			}
 		}
