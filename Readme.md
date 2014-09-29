@@ -1,20 +1,33 @@
 # require-jadeloader
 > A [Jade](http://jade-lang.com/) loader plugin for [RequireJS](http://requirejs.org).
 
-This is a fork of **[require-jade](https://github.com/deedubs/require-jade)** that does not include the whole jade library (it's a bower dependency instead), so you don't have to use buildPragmas but can simply stub out the modules not needed in a built version (this was not yet available when the original loader was written).
+***
 
-In development, it uses XMLHttpRequest to fetch the `.jade` files, so you can only fetch files that are on the same domain as the HTML page, and most browsers place restrictions on using XMLHttpRequest from local file URLs, so use a web server to serve your `.jade` files.
+This is a fork of **[require-jade](https://github.com/deedubs/require-jade)** that does not include the whole jade library (it's a bower dependency instead), so you don't have to use buildPragmas but can simply stub out the modules not needed in a built version (this was not yet available when the original loader was written). Also, updating Jade to a newer version is much easier as it does not need messing with the loader script.
+
+***
 
 ## Usage
 
-Reference Jade files via the `jadeloader!` plugin name:
+Make sure your `requirejs` config has paths set for `text` and `jade` (these are bower dependencies so you will already have them installed):
+
+```javascript
+({
+    paths : {
+        text : 'bower_components/requirejs-text/text',
+        jade : 'bower_components/jade/jade'
+    }
+})
+```
+
+Now you can reference Jade files via the `jadeloader!` plugin name:
 ```javascript
 require(['jadeloader!userview'], function(userView){
   $('.user').html(userView(locals));
 });
 ```
 
-They will be returned as a Jade template function that accepts locals as the first arg.
+Your templates will be returned as a Jade template function that accepts `locals` as the first arg.
 
 ## Optimizing
 
